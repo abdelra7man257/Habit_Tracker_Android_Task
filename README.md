@@ -45,10 +45,11 @@ The **Habit Tracker** is an Android application designed to help users build and
  ┃ ┃ ┃ ┃ ┃ ┣ remote
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ ApiService.kt
  ┃ ┃ ┃ ┃ ┣ 📂 ui
- ┃ ┃ ┃ ┃ ┃ ┣ HabitViewModel.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ SharedViewModel.kt
  ┃ ┃ ┃ ┃ ┃ ┣ screens
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ HabitListScreen.kt
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ AddHabitScreen.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ HabitHistoryScreen.kt
  ┃ ┃ ┃ ┃ ┣ 📂 utils
  ┃ ┃ ┃ ┃ ┃ ┣ Constants.kt
  ┃ ┃ ┃ ┣ 📂 res
