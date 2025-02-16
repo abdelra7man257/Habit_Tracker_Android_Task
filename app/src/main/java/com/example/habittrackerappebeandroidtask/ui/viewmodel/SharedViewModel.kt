@@ -125,7 +125,7 @@ class SharedViewModel @Inject constructor(
                     id = _states.value.selectedHabit.progressId,
                     habitId = it,
                     date = getCurrentDateMillis(),
-                    completionStatus = false
+                    completionStatus = _states.value.selectedHabit.habitProgress
                 ))
                 getHabits(getCurrentDateMillis())
                 _states.update {state->
@@ -137,7 +137,6 @@ class SharedViewModel @Inject constructor(
 
         }
     }
-
     private fun getHabits(date: Long) {
         val listOfHabitUI = mutableListOf<HabitUI>()
         viewModelScope.launch(Dispatchers.IO) {

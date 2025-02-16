@@ -34,29 +34,19 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
     private val viewModel: SharedViewModel by viewModels()
     private lateinit var navController: NavHostController
-    private lateinit var snackBarHostState: SnackbarHostState
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             navController = rememberNavController()
-            snackBarHostState = remember { SnackbarHostState() }
             HabitTrackerAppEBEAndroidTaskTheme {
-                Scaffold(modifier = Modifier.fillMaxSize(), snackbarHost = {
-                    SnackbarHost(snackBarHostState)
-                }) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavGraph(
                         modifier = Modifier.padding(innerPadding),
                         navController = navController,
                         viewModel = viewModel
-                    ) {
-                        lifecycleScope.launch(Dispatchers.Main) {
-                            snackBarHostState.showSnackbar(it , duration = SnackbarDuration.Short,withDismissAction = true)
-                        }
-                    }
+                    )
                 }
             }
         }

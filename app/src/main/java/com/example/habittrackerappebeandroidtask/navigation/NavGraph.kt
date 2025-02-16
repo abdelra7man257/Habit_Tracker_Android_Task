@@ -25,29 +25,9 @@ fun NavGraph(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     viewModel: SharedViewModel,
-    showSnackBar: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    LaunchedEffect(Unit)
-    {
-        viewModel.event.collect {
-            when (it) {
-                is SharedViewModelContract.Events.ShowSuccess -> {
-                    Log.d("TAG", "NavGraph: Success")
-                    showSnackBar(state.success)
-                }
-                is SharedViewModelContract.Events.ShowError -> {
-                    Log.d("TAG", "NavGraph: Error")
-                    showSnackBar(state.error)
-                }
-                is SharedViewModelContract.Events.ShowLoading -> {
-                    Log.d("TAG", "NavGraph: Loading")
-                }
-            }
 
-        }
-
-    }
 
     NavHost(
         navController = navController,
@@ -67,10 +47,7 @@ fun NavGraph(
                     )
                 }
             ) {
-                navController.navigate(it) {
-                    popUpTo(Route.HabitListScreen) { inclusive = true }
-                    launchSingleTop = true
-                }
+                navController.navigate(it)
             }
         }
 
@@ -94,10 +71,7 @@ fun NavGraph(
                 state = state,
             ) {
                 viewModel.sendAction(SharedViewModelContract.Actions.InsertHabit)
-                navController.navigate(Route.HabitListScreen) {
-                    popUpTo(Route.HabitListScreen) { inclusive = true }
-                    launchSingleTop = true
-                }
+                navController.navigate(Route.HabitListScreen)
             }
         }
 
