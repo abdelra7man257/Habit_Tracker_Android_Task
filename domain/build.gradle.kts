@@ -35,6 +35,11 @@ android {
 }
 
 dependencies {
+    testImplementation (libs.mockk)
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
